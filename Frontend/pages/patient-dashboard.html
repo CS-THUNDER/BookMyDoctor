@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Dashboard | BookMyDoctor</title>
+    <link rel="stylesheet" href="../css/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">🩺 BookMyDoctor</div>
+            <div class="user-info">
+                <img src="../Assets/patient-avatar.png" alt="Patient" class="user-avatar">
+                <h3 id="patient-name">Patient Name</h3>
+                <p id="patient-email">email@example.com</p>
+            </div>
+            <nav class="nav-menu">
+                <a href="#" class="active"><i class="fas fa-home"></i> Dashboard</a>
+                <a href="#"><i class="fas fa-calendar-alt"></i> Appointments</a>
+                <a href="#"><i class="fas fa-user-md"></i> Find Doctors</a>
+                <a href="#"><i class="fas fa-prescription"></i> Prescriptions</a>
+                <a href="#"><i class="fas fa-cog"></i> Settings</a>
+                <a href="#" id="logout-btn"><i class="fas fa-sign-out-alt"></i> Logout</a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <header class="dashboard-header">
+                <h1>Welcome, <span id="greeting-name">Patient</span></h1>
+                <div class="header-actions">
+                    <button class="btn primary" id="book-appointment-btn">
+                        <i class="fas fa-plus"></i> Book Appointment
+                    </button>
+                </div>
+            </header>
+
+            <div class="dashboard-cards">
+                <div class="card upcoming-appointments">
+                    <h3><i class="fas fa-calendar-check"></i> Upcoming Appointments</h3>
+                    <div class="appointments-list" id="upcoming-appointments">
+                        <!-- Dynamic content will be loaded here -->
+                    </div>
+                </div>
+
+                <div class="card find-doctors">
+                    <h3><i class="fas fa-search"></i> Find Doctors</h3>
+                    <div class="doctors-grid" id="doctors-list">
+                        <!-- Dynamic content will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/patient-dashboard.js"></script>
+</body>
+
+</html>
