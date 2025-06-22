@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <base href="/">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <!-- Navbar Structure -->
+    <nav class="navbar">
+        <!-- Your navbar content here -->
+    </nav>
+
+    <!-- Scripts -->
+    <script>
+        // Prevent standalone loading
+        if (window === top) {
+            window.location.href = '/';
+        }
+        
+        // Load styles
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = '/css/navbar.css';
+        document.head.appendChild(link);
+    </script>
+    <script src="/js/navbar.js"></script>
+</body>
+</html>

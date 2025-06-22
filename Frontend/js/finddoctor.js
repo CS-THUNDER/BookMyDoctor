@@ -4,6 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const searchBtn = document.querySelector(".search-btn");
   const doctorCards = document.querySelectorAll(".doctor-card");
   const appointmentBtns = document.querySelectorAll(".appointment-btn");
+  const categoryBtns = document.querySelectorAll(".category-btn");
 
   // Search functionality (basic filtering)
   function performSearch() {
@@ -84,14 +85,56 @@ document.addEventListener("DOMContentLoaded", function () {
     card.style.transition = "opacity 0.6s ease, transform 0.6s ease";
     observer.observe(card);
   });
+
+  // CSS Animation keyframes (added via JavaScript)
+  const style = document.createElement("style");
+  style.textContent = `
+      @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+      }
+  `;
+  document.head.appendChild(style);
+
+  categoryBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        const specialty = this.dataset.specialty;
+        loadDoctors(specialty);
+    });
+  });
+
+  // Initial load
+  loadDoctors('all');
 });
 
-// CSS Animation keyframes (added via JavaScript)
-const style = document.createElement("style");
-style.textContent = `
-    @keyframes fadeIn {
-        from { opacity: 0; transform: translateY(20px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-`;
-document.head.appendChild(style);
+async function loadDoctors(specialty) {
+try {
+  let url = 'http://localhost:5000/api/users/doctors';
+  if (specialty !== 'all') {
+      url += `?specialty=${specialty}`;
+  }
+
+  const response = await fetch(url);
+  const doctors = await response.json();
+
+  const doctorsContainer = document.getElementById('doctorsContainer');
+  doctorsContainer.innerHTML = doctors.map(doctor => `
+      <div class="doctor-card">
+          <img src="../Assets/doctor-avatar.png" alt="${doctor.name}">
+          <h3>${doctor.name}</h3>
+          <p class="specialty">${doctor.specialization || 'General Practitioner'}</p>
+          <p class="experience">${doctor.experience || '5'} years experience</p>
+          <button class="btn book-btn" onclick="viewDoctor('${doctor._id}')">View Profile</button>
+      </div>
+  `).join('');
+} catch (error) {
+  console.error('Error loading doctors:', error);
+}
+}
+
+function viewDoctor(doctorId) {
+  window.location.href = `doctor-profile.html?id=${doctorId}`;
+}

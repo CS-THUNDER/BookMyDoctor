@@ -5,31 +5,35 @@ const User = require("./user");
 const DoctorSchema = new mongoose.Schema({
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
-    required: true,
+    ref: 'User',
+    required: true
   },
   specialization: {
     type: String,
     required: true,
+    enum: ['cardiology', 'dermatology', 'neurology', 'pediatrics', 'orthopedics', 'general'],
+    default: 'general'
   },
   qualifications: {
     type: [String],
-    required: true,
+    required: true
   },
   experience: {
     type: Number,
-    required: true,
+    required: true
   },
   availableSlots: [
     {
       day: String,
-      times: [String],
-    },
+      times: [String]
+    }
   ],
   consultationFee: {
     type: Number,
-    required: true,
+    required: true
   },
-});
+  bio: String,
+  hospitalAffiliation: String
+}, { timestamps: true });
 
 module.exports = mongoose.model("Doctor", DoctorSchema);

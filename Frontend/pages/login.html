@@ -87,6 +87,17 @@
         </div>
     </div>
 
+    <script>
+        fetch('./components/navbar.html')
+                .then(response => response.text())
+                .then(html => {
+                    document.getElementById('navbar-container').innerHTML = html;
+                    const script = document.createElement('script');
+                    script.src = './js/navbar.js';
+                    document.body.appendChild(script);
+                });
+    </script>
+
     <script src="../js/login.js"></script>
 </body>
 

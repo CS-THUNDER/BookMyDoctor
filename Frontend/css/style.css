@@ -464,11 +464,11 @@ html {
   transform: translateY(-3px);
 }
 
-.twitter { background: #1DA1F2; }
-.instagram { background: #E1306C; }
-.linkedin { background: #0077B5; }
-.facebook { background: #1877F2; }
-
+/* Specific brand colors */
+.footer-social .facebook { background-color: #1877f2; }
+.footer-social .twitter { background-color: #1da1f2; }
+.footer-social .instagram { background-color: #e1306c; }
+.footer-social .linkedin { background-color: #0077b5; }
 .footer-bottom {
   text-align: center;
   margin-top: 50px;
@@ -526,4 +526,214 @@ html {
     flex-direction: column;
     gap: 30px;
   }
+}
+/* Featured Doctors */
+.featured-doctors {
+  padding: 80px 0;
+  background: #f7f9fc;
+}
+
+.featured-doctors h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #195f8a;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.doctor-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+}
+
+.doctor-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 25px 20px;
+  max-width: 300px;
+  transition: transform 0.3s ease;
+}
+
+.doctor-card img {
+  width: 100%;
+  height: 280px;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.doctor-card h3 {
+  color: #193f52;
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.doctor-card p {
+  color: #666;
+  font-size: 1rem;
+}
+
+/* Health Articles */
+.health-articles {
+  padding: 80px 0;
+  background: #ffffff;
+}
+
+.health-articles .section-heading {
+  text-align: center;
+  font-size: 2.5rem;
+  color: #195f8a;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.articles-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+
+.article-card {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  max-width: 350px;
+  transition: transform 0.3s ease;
+}
+
+.article-card:hover {
+  transform: translateY(-5px);
+}
+
+.article-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.article-card h3 {
+  font-size: 1.3rem;
+  color: #193f52;
+  padding: 15px 20px 0;
+}
+
+.article-card p {
+  padding: 10px 20px;
+  font-size: 1rem;
+  color: #555;
+}
+
+.article-card a {
+  display: block;
+  padding: 15px 20px;
+  background: #195f8a;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-top: 1px solid #eee;
+  transition: background 0.3s ease;
+}
+
+.article-card a:hover {
+  background: #13496e;
+}
+
+/* Testimonials */
+.testimonials {
+  padding: 80px 20px;
+  background: #eef2f7;
+  text-align: center;
+}
+
+.testimonials h2 {
+  font-size: 2.5rem;
+  color: #195f8a;
+  margin-bottom: 40px;
+  font-weight: 700;
+}
+
+.testimonial-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.testimonial {
+  background: white;
+  border-radius: 15px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  font-style: italic;
+  color: #444;
+}
+
+.testimonial h4 {
+  margin-top: 20px;
+  font-weight: 600;
+  color: #195f8a;
+}
+
+/* Health Stats */
+.stats {
+  padding: 80px 20px;
+  background: #ffffff;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.stat-box {
+  text-align: center;
+  background: white;
+  border-radius: 15px;
+  padding: 30px 40px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease;
+  min-width: 200px;
+}
+
+.stat-box:hover {
+  transform: translateY(-5px);
+}
+
+.stat-box h3 {
+  font-size: 2rem;
+  color: #195f8a;
+  margin-bottom: 10px;
+}
+
+.stat-box p {
+  font-size: 1rem;
+  color: #555;
+}
+
+/* Map Section */
+.map-section {
+  padding: 80px 20px;
+  background: #f9f9f9;
+}
+
+.map-section h2 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #195f8a;
+  margin-bottom: 30px;
+  font-weight: 700;
+}
+
+.map-section iframe {
+  width: 100%;
+  height: 300px;
+  border-radius: 15px;
+  border: none;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
 }

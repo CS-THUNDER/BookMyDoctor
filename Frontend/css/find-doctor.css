@@ -499,6 +499,39 @@ body {
   color: #ccc;
   font-size: 14px;
 }
+/* Specific brand colors */
+.footer-social .facebook { background-color: #1877f2; }
+.footer-social .twitter { background-color: #1da1f2; }
+.footer-social .instagram { background-color: #e1306c; }
+.footer-social .linkedin { background-color: #0077b5; }
+
+.footer-social a {
+  display: inline-block;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  border-radius: 50%;
+  background-color: transparent;
+  margin-right: 10px;
+  color: #fff;
+  transition: background 0.3s, color 0.3s, transform 0.3s;
+  vertical-align: middle;
+}
+
+.footer-social a.facebook { background-color: #1877f2; }
+.footer-social a.twitter { background-color: #1da1f2; }
+.footer-social a.instagram { background-color: #e1306c; }
+.footer-social a.linkedin { background-color: #0077b5; }
+
+.footer-social a:hover {
+  transform: scale(1.1);
+  color: #fff;
+  filter: brightness(1.1);
+}
+
+/* Hover effect */
+
 
 @media (max-width: 768px) {
   .navbar {

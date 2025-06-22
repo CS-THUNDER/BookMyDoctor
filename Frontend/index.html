@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="/Frontend/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Include navbar CSS -->
+    <link rel="stylesheet" href="/css/navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
 <body>
@@ -32,6 +34,7 @@
             <a href="/Frontend/pages/login.html" class="login-btn">Login</a>
         </div>
     </nav>
+    <div id="navbar-container"></div>
 
     <!-- Hero Section -->
     <div class="hero">
@@ -45,7 +48,7 @@
     <!-- Main Content Sections -->
     <section class="main-content">
         <div class="container">
-            <!-- First Section: Image Left, Text Right -->
+            <!-- First Section -->
             <div class="section">
                 <div class="image-container">
                     <img src="/Frontend/Assets/01img.jpeg" alt="Doctor appointment booking" class="section-image">
@@ -62,7 +65,7 @@
                 </div>
             </div>
 
-            <!-- Second Section: Image Right, Text Left -->
+            <!-- Second Section -->
             <div class="section section-reverse">
                 <div class="image-container">
                     <img src="/Frontend/Assets/02img.jpeg" alt="OTP login on mobile phone" class="section-image">
@@ -118,6 +121,103 @@
         </div>
     </section>
 
+    <!-- Featured Doctors Section -->
+    <section class="featured-doctors">
+        <div class="container">
+            <h2>Meet Our Top Doctors</h2>
+            <div class="doctor-cards">
+                <div class="doctor-card">
+                    <img src="/Frontend/Assets/female_doctor3.jpeg" alt="Dr. Priya Sharma">
+                    <h3>Dr. Priya Sharma</h3>
+                    <p>Cardiologist • 12+ yrs experience</p>
+                </div>
+                <div class="doctor-card">
+                    <img src="/Frontend/Assets/female_doctor4.jpeg" alt="Dr. Meera Reddy">
+                    <h3>Dr. Meera Reddy</h3>
+                    <p>Dermatologist • 10+ yrs experience</p>
+                </div>
+                <div class="doctor-card">
+                    <img src="/Frontend/Assets/male_doctor1.jpeg" alt="Dr. Arjun Sharma">
+                    <h3>Dr. Arjun Sharma</h3>
+                    <p>Neurologist • 20 years experience</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Articles Section -->
+    <section class="health-articles">
+        <div class="container">
+            <h2 class="section-heading">Latest Health Articles</h2>
+            <div class="articles-grid">
+                <div class="article-card">
+                    <img src="Assets/Simple Blood Test Predicts Longevity.png" alt="Healthy Lifestyle">
+                    <h3>Article-Blood-Test</h3>
+                    <p>Simple daily routines to improve your overall well-being and boost immunity.</p>
+                    <a href="/Frontend/article/Article-Blood-Test.html">Read More</a>
+                </div>
+                <div class="article-card">
+                    <img src="Assets/managing stress naturally.png" alt="Mental Health">
+                    <h3>Managing Stress Naturally</h3>
+                    <p>Learn techniques for mental relaxation and better sleep without medication.</p>
+                    <a href="/Frontend/article/Managing-Stress-Naturally.htm">Read More</a>
+                </div>
+                <!-- Article 3 -->
+                <div class="article-card">
+                    <img src="Assets/Boost-Your-Immunity.png" alt="Boost Immunity">
+                    <h3>Boost Your Immunity</h3>
+                    <p>Explore immunity-boosting habits backed by science to stay protected year-round.</p>
+                    <a href="/Frontend/article/Boost-Your-Immunity.htm">Read More</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <h2>What Our Patients Say</h2>
+            <div class="testimonial-cards">
+                <div class="testimonial">
+                    <p>“Booking my appointment was super easy! The doctor was excellent.”</p>
+                    <h4>- Priya Sharma</h4>
+                </div>
+                <div class="testimonial">
+                    <p>“Great experience. Got instant confirmation and professional service.”</p>
+                    <h4>- Arjun Mehta</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Stats Section -->
+    <section class="stats">
+        <div class="container">
+            <div class="stat-box">
+                <h3><span class="counter" data-target="5000">0+</span>
+                </h3>
+                <p>Appointments Booked</p>
+            </div>
+            <div class="stat-box">
+                <h3><span class="counter">200+</span></h3>
+                <p>Verified Doctors</p>
+            </div>
+            <div class="stat-box">
+                <h3><span class="counter">300+</span></h3>
+                <p>Hospitals & Clinics</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section class="map-section">
+        <div class="container">
+            <h2>Our Partnered Clinics</h2>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18..." width="100%" height="300" style="border:0;"
+                allowfullscreen loading="lazy"></iframe>
+        </div>
+    </section>
+
     <!-- Footer Section -->
     <footer class="site-footer" id="contact">
         <div class="footer-container">
@@ -155,7 +255,9 @@
                             class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
+
         </div>
+
 
         <div class="footer-bottom">
             <p>&copy; 2025 BookMyDoctor. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms</a>
@@ -163,8 +265,33 @@
         </div>
     </footer>
 
+    <script>
+        // Load navbar
+        fetch('/components/navbar.html')
+            .then(response => response.text())
+            .then(html => {
+                const container = document.getElementById('navbar-container');
+                const range = document.createRange();
+                range.selectNode(container);
+                const fragment = range.createContextualFragment(html);
+                container.appendChild(fragment);
+            })
+            .catch(error => {
+                console.error('Error loading navbar:', error);
+                document.getElementById('navbar-container').innerHTML = `
+                        <nav class="navbar">
+                            <a href="/">BookMyDoctor</a>
+                            <!-- Fallback navigation -->
+                        </nav>
+                    `;
+            });
+    </script>
+
+    <!-- Scripts -->
     <script src="/Frontend/js/script.js"></script>
     <script src="/Frontend/js/search.js"></script>
+    <script src="/Frontend/js/statsCounter.js"></script>
+    <script src="/Frontend/js/index.js"></script>
 </body>
 
 </html>
