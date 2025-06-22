@@ -7,7 +7,7 @@
 
 body {
   font-family: "Inter", sans-serif;
-  background: url("appointment booking bg.jpg") no-repeat center center/cover;
+  background: url("/Frontend/Assets/appointment booking bg.jpg") no-repeat center center/cover;
   min-height: 100vh;
   display: flex;
   align-items: center;

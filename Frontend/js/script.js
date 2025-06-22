@@ -1,12 +1,12 @@
-function openBookingModal() {
-  // Redirect to booking page
-  window.location.href = "/Appointment/Appointment.html";
-  
-}
-
-// GSAP Animations
+// Initialize GSAP animations
 gsap.registerPlugin(ScrollTrigger);
 
+// Booking modal function
+function openBookingModal() {
+  window.location.href = "/Frontend/pages/Appointment.html";
+}
+
+// Section animations
 gsap.utils.toArray(".section").forEach((section) => {
   gsap.from(section, {
     scrollTrigger: {
@@ -14,10 +14,10 @@ gsap.utils.toArray(".section").forEach((section) => {
       start: "top 80%",
       toggleActions: "play none none none",
     },
-    y: 100,
+    y: 50,
     opacity: 0,
-    duration: 1,
-    ease: "power3.out",
+    duration: 0.8,
+    ease: "power2.out",
   });
 });
 
@@ -28,7 +28,11 @@ const indicators = document.querySelectorAll(".carousel-indicator");
 const track = document.getElementById("carouselTrack");
 
 function updateCarousel() {
-  track.style.transform = `translateX(-${currentSlide * 100}%)`;
+  gsap.to(track, {
+    x: `-${currentSlide * 100}%`,
+    duration: 0.6,
+    ease: "power2.out",
+  });
 
   indicators.forEach((indicator, index) => {
     indicator.classList.toggle("active", index === currentSlide);
@@ -36,14 +40,7 @@ function updateCarousel() {
 }
 
 function moveCarousel(direction) {
-  currentSlide += direction;
-
-  if (currentSlide < 0) {
-    currentSlide = slides.length - 1;
-  } else if (currentSlide >= slides.length) {
-    currentSlide = 0;
-  }
-
+  currentSlide = (currentSlide + direction + slides.length) % slides.length;
   updateCarousel();
 }
 
@@ -53,19 +50,26 @@ function goToSlide(slideIndex) {
 }
 
 // Auto-play carousel
-setInterval(() => {
-  moveCarousel(1);
-}, 5000);
+let carouselInterval = setInterval(() => moveCarousel(1), 5000);
 
-// Smooth scrolling for navigation links
+// Pause on hover
+document.querySelector(".carousel").addEventListener("mouseenter", () => {
+  clearInterval(carouselInterval);
+});
+
+document.querySelector(".carousel").addEventListener("mouseleave", () => {
+  carouselInterval = setInterval(() => moveCarousel(1), 5000);
+});
+
+// Smooth scrolling
 document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
   anchor.addEventListener("click", function (e) {
     e.preventDefault();
     const target = document.querySelector(this.getAttribute("href"));
     if (target) {
-      target.scrollIntoView({
+      window.scrollTo({
+        top: target.offsetTop - 80,
         behavior: "smooth",
-        block: "start",
       });
     }
   });

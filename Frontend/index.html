@@ -1,37 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>BookMyDoctor | Home</title>
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="/Frontend/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-
-
-    
-
-
-
 </head>
 
 <body>
-
     <!-- Navigation -->
     <nav class="navbar">
         <div class="logo">🩺 BookMyDoctor</div>
         <div class="nav-search">
-            <input type="text" placeholder="Search..." />
+            <input type="text" id="searchInput" placeholder="Search doctors, specialties..." />
             <button type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
-                </svg>
+                <i class="fas fa-search"></i>
             </button>
+            <div id="searchResults" class="search-results"></div>
         </div>
         <ul class="nav-links">
             <li><a href="/Frontend/index.html">Home</a></li>
@@ -43,66 +32,16 @@
             <a href="/Frontend/pages/login.html" class="login-btn">Login</a>
         </div>
     </nav>
-    
+
     <!-- Hero Section -->
     <div class="hero">
         <div class="hero-content">
             <h1>Healthcare Appointment Booking System</h1>
             <p>Find doctors, check availability, and book appointments in seconds.</p>
             <button class="cta-button" onclick="openBookingModal()">Book Now</button>
-=======
-    <link rel="stylesheet" href="style.css" />
-  </head>
-
-  <body>
-    <div class="hero">
-      <nav class="navbar">
-        <div class="logo">🩺 BookMyDoctor</div>
-        <div class="nav-search">
-          <input type="text" placeholder="Search..." />
-          <button type="submit">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="16"
-              height="16"
-              fill="currentColor"
-              class="bi bi-search"
-              viewBox="0 0 16 16"
-            >
-              <path
-                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
-              />
-            </svg>
-          </button>
->>>>>>> Stashed changes
         </div>
-        <ul class="nav-links">
-          <li><a href="/index.html" target="_blank">Home</a></li>
-          <li><a href="#">Find Doctor</a></li>
-          <li>
-            <a href="Appointment/Appointment.html" target="_blank"
-              >Book Appointment</a
-            >
-          </li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-        <div class="nav-buttons">
-          <!-- <button class="login-button">Login</button> -->
-          <a href="/LOGIN/login.html" class="login-btn" target="_blank"
-            >Login</a
-          >
-        </div>
-      </nav>
-
-      <div class="hero-content">
-        <h1>Healthcare Appointment Booking System</h1>
-        <p>
-          Find doctors, check availability, and book appointments in seconds.
-        </p>
-        <button class="cta-button">Schedule Now</button>
-      </div>
     </div>
-    
+
     <!-- Main Content Sections -->
     <section class="main-content">
         <div class="container">
@@ -114,12 +53,15 @@
                 <div class="text-content">
                     <h2 class="section-heading">Seamless Doctor Appointments</h2>
                     <p class="section-text">
-                        <strong>Skip the waiting room</strong> and <span class="highlight">book in just a few taps</span>.
-                        Our platform connects you with verified doctors, allowing you to schedule appointments at your <strong>preferred time</strong> and <span class="highlight">location</span>. Enjoy a hassle-free experience from search to confirmation.
+                        <strong>Skip the waiting room</strong> and <span class="highlight">book in just a few
+                            taps</span>.
+                        Our platform connects you with verified doctors, allowing you to schedule
+                        appointments at your <strong>preferred time</strong> and <span
+                            class="highlight">location</span>.
                     </p>
                 </div>
             </div>
-    
+
             <!-- Second Section: Image Right, Text Left -->
             <div class="section section-reverse">
                 <div class="image-container">
@@ -129,13 +71,14 @@
                     <h2 class="section-heading">Instant OTP Login</h2>
                     <p class="section-text">
                         No password hassle. Just your phone number and an OTP.
-                        <span class="highlight">Secure, fast, and convenient</span> access to your healthcare dashboard in seconds.
+                        <span class="highlight">Secure, fast, and convenient</span> access to your
+                        healthcare dashboard in seconds.
                     </p>
                 </div>
             </div>
         </div>
     </section>
-    
+
     <!-- Carousel Section -->
     <section class="carousel-section">
         <div class="carousel-container">
@@ -145,23 +88,21 @@
                     <div class="carousel-slide">
                         <div class="carousel-content">
                             <h3>24/7 Availability</h3>
-                            <p>Book appointments anytime, anywhere. Our platform is available round the clock for your
-                                convenience.</p>
+                            <p>Book appointments anytime, anywhere. Our platform is available round the clock.</p>
                             <a href="#contact" class="carousel-btn">Learn More</a>
                         </div>
                     </div>
                     <div class="carousel-slide">
                         <div class="carousel-content">
                             <h3>Verified Doctors</h3>
-                            <p>All our doctors are verified professionals with years of experience in their respective
-                                fields.</p>
+                            <p>All our doctors are verified professionals with years of experience.</p>
                             <a href="/Frontend/pages/find-doctor.html" class="carousel-btn">View Doctors</a>
                         </div>
                     </div>
                     <div class="carousel-slide">
                         <div class="carousel-content">
                             <h3>Instant Confirmation</h3>
-                            <p>Get instant confirmation of your appointments with real-time updates and notifications.</p>
+                            <p>Get instant confirmation of your appointments with real-time updates.</p>
                             <a href="/Frontend/pages/Appointment.html" class="carousel-btn">Book Now</a>
                         </div>
                     </div>
@@ -176,9 +117,7 @@
             </div>
         </div>
     </section>
-    
-   
-    
+
     <!-- Footer Section -->
     <footer class="site-footer" id="contact">
         <div class="footer-container">
@@ -186,51 +125,46 @@
                 <h2>BookMyDoctor</h2>
                 <p>Your gateway to healthcare innovation. Connect, explore, and grow with us.</p>
             </div>
-    
+
             <div class="footer-links">
                 <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">About</a></li>
-                    <li><a href="#">Contact</a></li>
-                    <li><a href="#">Our Team</a></li>
+                    <li><a href="/Frontend/index.html">Home</a></li>
+                    <li><a href="/Frontend/pages/find-doctor.html">Find Doctor</a></li>
+                    <li><a href="/Frontend/pages/Appointment.html">Book Appointment</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </div>
-    
+
             <div class="footer-contact">
                 <h3>Contact</h3>
                 <p>Email: support@bookmydoctor.com</p>
                 <p>Phone: +91 xxxxxxxxx</p>
                 <p>Address: Midnapore, India, 721102</p>
             </div>
-    
+
             <div class="footer-social">
                 <h3>Follow Us</h3>
                 <div class="social-icons">
                     <a href="https://twitter.com/" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                    <a href="https://instagram.com/" class="instagram" target="_blank"><i class="fab fa-instagram"></i></a>
-                    <a href="https://linkedin.com/" class="linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                    <a href="https://facebook.com/" class="facebook" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://instagram.com/" class="instagram" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/" class="linkedin" target="_blank"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="https://facebook.com/" class="facebook" target="_blank"><i
+                            class="fab fa-facebook-f"></i></a>
                 </div>
             </div>
-              
-              
         </div>
-    
+
         <div class="footer-bottom">
-            <p>&copy; 2025 BookMyDoctor. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms</a></p>
+            <p>&copy; 2025 BookMyDoctor. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms</a>
+            </p>
         </div>
     </footer>
 
-<<<<<<< Updated upstream
-        
-
-        <script src="/Frontend/js/script.js"></script>
+    <script src="/Frontend/js/script.js"></script>
+    <script src="/Frontend/js/search.js"></script>
 </body>
 
 </html>
-=======
-    <script src="script.js"></script>
-  </body>
-</html>
->>>>>>> Stashed changes
