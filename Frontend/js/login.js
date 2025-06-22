@@ -81,3 +81,50 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 1500);
   }
 });
+
+// Replace the existing loginUser function with this:
+async function loginUser(email, password, userType) {
+  try {
+    const btn = userType === "patient" 
+      ? patientLoginForm.querySelector("button[type='submit']") 
+      : doctorLoginForm.querySelector("button[type='submit']");
+    
+    btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Logging in...';
+    btn.disabled = true;
+
+    const response = await fetch('http://localhost:5000/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        email,
+        password,
+        role: userType
+      })
+    });
+
+    const data = await response.json();
+    
+    if (!response.ok) {
+      throw new Error(data.msg || 'Login failed');
+    }
+
+    // Save token in localStorage and redirect
+    localStorage.setItem('token', data.token);
+    localStorage.setItem('userRole', userType);
+    
+    if (userType === 'patient') {
+      window.location.href = "../index.html";
+    } else {
+      window.location.href = "../pages/doctor-dashboard.html";
+    }
+  } catch (error) {
+    alert(error.message);
+    const btn = userType === "patient" 
+      ? patientLoginForm.querySelector("button[type='submit']") 
+      : doctorLoginForm.querySelector("button[type='submit']");
+    btn.innerHTML = 'Login';
+    btn.disabled = false;
+  }
+}
