@@ -1,0 +1,182 @@
+/* Reset and Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", sans-serif;
+  background: url("appointment booking bg.jpg") no-repeat center center/cover;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 900px;
+}
+
+/* Form Card */
+.form-card {
+  position: relative;
+  background: rgba(255, 255, 255, 0.6);
+  padding: 30px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  animation: fadeInUp 1s ease-out;
+  overflow: hidden;
+}
+
+/* Blurred Background Inside Form */
+.form-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(6px);
+  z-index: -1;
+  border-radius: 16px;
+}
+
+/* Heading */
+.form-card h2 {
+  font-size: 26px;
+  color: #003366;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+/* Form Grid */
+form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.form-group i {
+  position: absolute;
+  top: 42px;
+  left: 12px;
+  color: #0066cc;
+  font-size: 16px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  padding: 12px 12px 12px 36px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 15px;
+  background-color: rgba(255, 255, 255, 0.9);
+  transition: border 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border: 1.5px solid #007bff;
+  outline: none;
+}
+
+.form-group label {
+  margin-bottom: 6px;
+  font-weight: 600;
+  color: #333;
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+/* Full-width for last row */
+.form-group:nth-child(11),
+button {
+  grid-column: span 2;
+}
+
+/* Submit Button */
+button {
+  background: #007bff;
+  color: #fff;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  background: #0056b3;
+  transform: scale(1.03);
+}
+
+/* Toast Styles */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px 25px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+  background-color: #28a745;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.25);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1000;
+  transition: all 0.4s ease;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateX(-50%) translateY(-10px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-group:nth-child(11),
+  button {
+    grid-column: span 1;
+  }
+
+  .form-group i {
+    top: 42px;
+    left: 12px;
+  }
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

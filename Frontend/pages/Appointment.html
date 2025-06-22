@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<<<<<<< HEAD:Frontend/pages/Appointment.html
+    <title>Appointment Booking</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" href="/Frontend/css/Appointment_style.css" />
+</head>
+=======
+    <title>Book Appointment</title>
+    <link rel="stylesheet" href="Appointment_style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- 🔹 Blurred Background -->
+    <div class="background"></div>
+>>>>>>> 56d97e5d4f7809eac24db6c0c0886041a53ce845:Appointment/Appointment.html
+
+    <!-- 🔸 Main Form Container -->
+    <div class="container">
+      <div class="form-card">
+        <h2><i class="fas fa-calendar-check"></i> Book an Appointment</h2>
+        <form id="bookingForm">
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <i class="fas fa-user"></i>
+            <input
+              type="text"
+              id="name"
+              placeholder="Enter your full name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <i class="fas fa-phone"></i>
+            <input
+              type="tel"
+              id="phone"
+              placeholder="10-digit number"
+              pattern="\d{10}"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <i class="fas fa-envelope"></i>
+            <input
+              type="email"
+              id="email"
+              placeholder="your@email.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="gender">Gender</label>
+            <i class="fas fa-venus-mars"></i>
+            <select id="gender" required>
+              <option value="" disabled selected>Select Gender</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="pincode">Pincode</label>
+            <i class="fas fa-map-pin"></i>
+            <input
+              type="text"
+              id="pincode"
+              placeholder="Enter your area pincode"
+              pattern="\d{6}"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="city">City / Village</label>
+            <i class="fas fa-city"></i>
+            <input
+              type="text"
+              id="city"
+              placeholder="Enter city or village name"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="doctor">Select Doctor</label>
+            <i class="fas fa-user-md"></i>
+            <select id="doctor" required>
+              <option value="" disabled selected>Choose a doctor</option>
+
+              <option value="1">Dr. Priya Sharma (Cardiologist)</option>
+              <option value="2">Dr. Rajesh Kumar (Pediatrician)</option>
+              <option value="3">Dr. Anya Sharma (Dentist)</option>
+              <option value="4">Dr. Vikram Singh (Orthopedist)</option>
+              <option value="5">Dr. Meera Reddy (Dermatologist)</option>
+              <option value="6">Dr. Arjun Sharma (Neurologist)</option>
+              <option value="7">Dr. Kavita Nair (Gynecologist)</option>
+              <option value="8">Dr. Suresh Sharma (Ophthalmologist)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="date">Date</label>
+            <i class="fas fa-calendar-day"></i>
+            <input type="date" id="date" required />
+          </div>
+          <div class="form-group">
+            <label for="time">Time</label>
+            <i class="fas fa-clock"></i>
+            <input type="time" id="time" required />
+          </div>
+          <div class="form-group">
+            <label for="notes">Notes / Symptoms</label>
+            <i class="fas fa-notes-medical"></i>
+            <textarea
+              id="notes"
+              placeholder="Describe your symptoms (optional)"
+            ></textarea>
+          </div>
+          <button type="submit">
+            <i class="fas fa-paper-plane"></i> Book Now
+          </button>
+        </form>
+      </div>
+    </div>
+
+<<<<<<< HEAD:Frontend/pages/Appointment.html
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="/Frontend/js/Appointment_script.js"></script>
+</body>
+=======
+    <!-- Toast Message -->
+    <div id="toast" class="toast"></div>
+>>>>>>> 56d97e5d4f7809eac24db6c0c0886041a53ce845:Appointment/Appointment.html
+
+    <script src="Appointment_script.js"></script>
+  </body>
+</html>
