@@ -1,3 +1,4 @@
+<!-- find-doctor.html -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -9,6 +10,29 @@
 </head>
 
 <body>
+    <!-- ✅ NAVIGATION BAR -->
+    <nav class="navbar">
+        <div class="logo">🩺 BookMyDoctor</div>
+        <div class="nav-search">
+            <input type="text" placeholder="Search..." />
+            <button type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
+                    viewBox="0 0 16 16">
+                    <path
+                        d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0" />
+                </svg>
+            </button>
+        </div>
+        <ul class="nav-links">
+            <li><a href="/Frontend/index.html">Home</a></li>
+            <li><a href="/Frontend/pages/find-doctor.html">Find Doctor</a></li>
+            <li><a href="/Frontend/pages/Appointment.html">Book Appointment</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-buttons">
+            <a href="/Frontend/pages/login.html" class="login-btn">Login</a>
+        </div>
+    </nav>
     <!-- Header Section -->
     <header class="header">
         <div class="container">
@@ -41,8 +65,7 @@
                     <!-- Doctor Card 1 -->
                     <div class="doctor-card">
                         <div class="doctor-image">
-                            <img src="/Frontend/Assets/female_doctor3.jpeg"
-                                alt="Dr. Priya Sharma">
+                            <img src="/Frontend/Assets/female_doctor3.jpeg" alt="Dr. Priya Sharma">
                         </div>
                         <div class="doctor-info">
                             <h3 class="doctor-name">Dr. Priya Sharma</h3>
@@ -58,8 +81,7 @@
                     <!-- Doctor Card 2 -->
                     <div class="doctor-card">
                         <div class="doctor-image">
-                            <img src="/Frontend/Assets/male_doctor4.jpeg"
-                                alt="Dr. Rajesh Kumar">
+                            <img src="/Frontend/Assets/male_doctor4.jpeg" alt="Dr. Rajesh Kumar">
                         </div>
                         <div class="doctor-info">
                             <h3 class="doctor-name">Dr. Rajesh Kumar</h3>
@@ -75,8 +97,7 @@
                     <!-- Doctor Card 3 -->
                     <div class="doctor-card">
                         <div class="doctor-image">
-                            <img src="/Frontend/Assets/female_doctor1.jpeg"
-                                alt="Dr. Anya Sharma">
+                            <img src="/Frontend/Assets/female_doctor1.jpeg" alt="Dr. Anya Sharma">
                         </div>
                         <div class="doctor-info">
                             <h3 class="doctor-name">Dr. Anya Sharma</h3>
@@ -92,8 +113,7 @@
                     <!-- Doctor Card 4 -->
                     <div class="doctor-card">
                         <div class="doctor-image">
-                            <img src="/Frontend/Assets/mal_doctor3.jpeg"
-                                alt="Dr. Vikram Singh">
+                            <img src="/Frontend/Assets/mal_doctor3.jpeg" alt="Dr. Vikram Singh">
                         </div>
                         <div class="doctor-info">
                             <h3 class="doctor-name">Dr. Vikram Singh</h3>
@@ -109,8 +129,7 @@
                     <!-- Doctor Card 5 -->
                     <div class="doctor-card">
                         <div class="doctor-image">
-                            <img src="/Frontend/Assets/female_doctor4.jpeg"
-                                alt="Dr. Meera Reddy">
+                            <img src="/Frontend/Assets/female_doctor4.jpeg" alt="Dr. Meera Reddy">
                         </div>
                         <div class="doctor-info">
                             <h3 class="doctor-name">Dr. Meera Reddy</h3>
@@ -126,8 +145,7 @@
                     <!-- Doctor Card 6 -->
                     <div class="doctor-card">
                         <div class="doctor-image">
-                            <img src="/Frontend/Assets/male_doctor1.jpeg"
-                                alt="Dr. Arjun Sharma">
+                            <img src="/Frontend/Assets/male_doctor1.jpeg" alt="Dr. Arjun Sharma">
                         </div>
                         <div class="doctor-info">
                             <h3 class="doctor-name">Dr. Arjun Sharma</h3>
@@ -143,8 +161,7 @@
                     <!-- Doctor Card 7 -->
                     <div class="doctor-card">
                         <div class="doctor-image">
-                            <img src="/Frontend/Assets/female_doctor2.png"
-                                alt="Dr. Kavita Nair">
+                            <img src="/Frontend/Assets/female_doctor2.png" alt="Dr. Kavita Nair">
                         </div>
                         <div class="doctor-info">
                             <h3 class="doctor-name">Dr. Kavita Nair</h3>
@@ -160,8 +177,7 @@
                     <!-- Doctor Card 8 -->
                     <div class="doctor-card">
                         <div class="doctor-image">
-                            <img src="/Frontend/Assets/male_doctor2.jpeg"
-                                alt="Dr. Suresh Sharma">
+                            <img src="/Frontend/Assets/male_doctor2.jpeg" alt="Dr. Suresh Sharma">
                         </div>
                         <div class="doctor-info">
                             <h3 class="doctor-name">Dr. Suresh Sharma</h3>
@@ -178,14 +194,52 @@
         </div>
     </main>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 BookMyDoctor. All rights reserved.</p>
+    <!-- ✅ TOAST -->
+    <div id="toast" class="toast"></div>
+
+    <!-- ✅ FOOTER -->
+    <footer class="site-footer" id="contact">
+        <div class="footer-container">
+            <div class="footer-about">
+                <h2>BookMyDoctor</h2>
+                <p>Your gateway to healthcare innovation. Connect, explore, and grow with us.</p>
+            </div>
+            <div class="footer-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Our Team</a></li>
+                </ul>
+            </div>
+            <div class="footer-contact">
+                <h3>Contact</h3>
+                <p>Email: support@bookmydoctor.com</p>
+                <p>Phone: +91 xxxxxxxxx</p>
+                <p>Address: Midnapore, India, 721102</p>
+            </div>
+            <div class="footer-social">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://twitter.com/" class="twitter" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://instagram.com/" class="instagram" target="_blank"><i
+                            class="fab fa-instagram"></i></a>
+                    <a href="https://linkedin.com/" class="linkedin" target="_blank"><i
+                            class="fab fa-linkedin-in"></i></a>
+                    <a href="https://facebook.com/" class="facebook" target="_blank"><i
+                            class="fab fa-facebook-f"></i></a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 BookMyDoctor. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms</a>
+            </p>
         </div>
     </footer>
 
     <script src="/Frontend/js/finddoctor.js"></script>
+    <script src="/Frontend/js/search.js"></script>
 </body>
 
 </html>
