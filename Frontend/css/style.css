@@ -20,6 +20,43 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Project Status Scrolling Banner */
+.project-banner {
+  width: 100%;
+  overflow: hidden;
+  background-color: #28ace0;
+  padding: 3px 0;
+  border-bottom: 1px solid #ccc;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1100; /* higher than navbar */
+}
+
+.scrolling-text {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 15px;
+  font-weight: 550;
+  padding-left: 100%;
+  animation: scroll-left 15s linear infinite;
+  color: #150f0f;
+}
+
+@keyframes scroll-left {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* Offset the navbar due to banner */
+.navbar {
+  top: 27px !important; /* adjust if needed */
+}
+
 /* Navbar Styles */
 .navbar {
   display: flex;
@@ -50,10 +87,11 @@ html {
 .nav-links li a {
   text-decoration: none;
   color: #195f8a;
-  font-weight: 500;
+  font-weight: 550;
   padding: 8px 15px;
   border-radius: 20px;
   transition: all 0.3s ease;
+
 }
 
 .nav-links li a:hover {
@@ -66,7 +104,7 @@ html {
   display: flex;
   align-items: center;
   background: #ffffff;
-  border: 1px solid #ddd;
+  border: 2px solid #ddd;
   border-radius: 25px;
   padding: 5px 15px;
   width: 300px;
