@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Check authentication
+  const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
-  const userRole = localStorage.getItem("userRole");
 
-  if (!token || userRole !== "patient") {
-    window.location.href = "login.html";
+  if (!token || !user || user.role !== "patient") {
+    window.location.href = "/Frontend/pages/login.html";
     return;
   }
 
@@ -27,29 +27,30 @@ document.addEventListener("DOMContentLoaded", function () {
 // Load current user data
 async function loadUserData() {
   try {
-    const response = await fetch("http://localhost:5000/api/users/me", {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    // Display user info from local storage first
+    document.getElementById("patient-name").textContent = user.name;
+    document.getElementById("patient-email").textContent = user.email;
+    document.getElementById("greeting-name").textContent = user.name.split(" ")[0];
+
+    // Then try to fetch updated data from server
+    const response = await fetch("/api/v1/auth/me", {
       headers: {
-        "x-auth-token": localStorage.getItem("token"),
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch user data");
+    if (response.ok) {
+      const userData = await response.json();
+      // Update any additional user data if needed
     }
-
-    const userData = await response.json();
-
-    // Display user info
-    document.getElementById("patient-name").textContent = userData.name;
-    document.getElementById("patient-email").textContent = userData.email;
-    document.getElementById("greeting-name").textContent =
-      userData.name.split(" ")[0];
   } catch (error) {
     console.error("Error loading user data:", error);
-    alert("Error loading user data. Please login again.");
-    logout();
   }
 }
+
+// ... rest of the patient-dashboard.js code remains the same ...
 
 // Load patient's appointments
 async function loadAppointments() {

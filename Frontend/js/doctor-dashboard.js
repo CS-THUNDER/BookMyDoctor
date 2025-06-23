@@ -1,10 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Check authentication
+  const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
-  const userRole = localStorage.getItem("userRole");
 
-  if (!token || userRole !== "doctor") {
-    window.location.href = "login.html";
+  if (!token || !user || user.role !== "doctor") {
+    window.location.href = "/Frontend/pages/login.html";
     return;
   }
 
@@ -27,32 +27,35 @@ document.addEventListener("DOMContentLoaded", function () {
 // Load doctor data
 async function loadDoctorData() {
   try {
-    const response = await fetch("http://localhost:5000/api/users/me", {
+    const user = JSON.parse(localStorage.getItem("user"));
+
+    // Display doctor info from local storage first
+    document.getElementById("doctor-name").textContent = user.name;
+    document.getElementById("greeting-name").textContent =
+      user.name.split(" ")[0];
+
+    // Then try to fetch updated data from server
+    const response = await fetch("/api/v1/auth/me", {
       headers: {
-        "x-auth-token": localStorage.getItem("token"),
+        Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
     });
 
-    if (!response.ok) {
-      throw new Error("Failed to fetch doctor data");
+    if (response.ok) {
+      const doctorData = await response.json();
+      document.getElementById("doctor-specialization").textContent =
+        doctorData.specialization || "General Practitioner";
+    } else {
+      document.getElementById("doctor-specialization").textContent =
+        "General Practitioner";
     }
-
-    const doctorData = await response.json();
-
-    // Display doctor info
-    document.getElementById("doctor-name").textContent = doctorData.name;
-    document.getElementById("greeting-name").textContent =
-      doctorData.name.split(" ")[0];
-
-    // In a real app, you would fetch doctor details
-    document.getElementById("doctor-specialization").textContent =
-      "Cardiologist";
   } catch (error) {
     console.error("Error loading doctor data:", error);
-    alert("Error loading doctor data. Please login again.");
-    logout();
+    document.getElementById("doctor-specialization").textContent =
+      "General Practitioner";
   }
 }
+
 
 // Load today's appointments
 async function loadTodaysAppointments() {

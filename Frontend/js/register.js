@@ -1,79 +1,87 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Set user type from URL or default to patient
-  const urlParams = new URLSearchParams(window.location.search);
-  let userType = urlParams.get("type") || "patient";
-
-  // DOM Elements
-  const registerForm = document.getElementById("registerForm");
+  // Role selection
   const patientBtn = document.getElementById("patientBtn");
   const doctorBtn = document.getElementById("doctorBtn");
-  const userTypeInput = document.getElementById("userType");
+  const roleInput = document.getElementById("role");
   const registerTitle = document.getElementById("registerTitle");
   const registerSubtitle = document.getElementById("registerSubtitle");
   const registerBtn = document.getElementById("registerBtn");
 
-  // Initialize form based on user type
-  function initForm() {
-    userTypeInput.value = userType;
+  // Toggle between patient and doctor registration
+  function setActiveRole(role) {
+    patientBtn.classList.toggle("active", role === "patient");
+    doctorBtn.classList.toggle("active", role === "doctor");
+    roleInput.value = role;
 
-    if (userType === "doctor") {
-      doctorBtn.classList.add("active");
-      patientBtn.classList.remove("active");
-      registerTitle.textContent = "Doctor Registration";
-      registerSubtitle.textContent =
-        "Join our platform to connect with patients";
+    if (role === "patient") {
+      registerTitle.textContent = "Create Patient Account";
+      registerSubtitle.textContent = "Join as a patient to book appointments";
     } else {
-      patientBtn.classList.add("active");
-      doctorBtn.classList.remove("active");
-      registerTitle.textContent = "Patient Registration";
-      registerSubtitle.textContent = "Join us to book appointments easily";
+      registerTitle.textContent = "Create Doctor Account";
+      registerSubtitle.textContent = "Join as a doctor to manage appointments";
     }
   }
 
-  // Toggle user type
-  patientBtn.addEventListener("click", () => {
-    userType = "patient";
-    initForm();
-  });
+  patientBtn.addEventListener("click", () => setActiveRole("patient"));
+  doctorBtn.addEventListener("click", () => setActiveRole("doctor"));
 
-  doctorBtn.addEventListener("click", () => {
-    userType = "doctor";
-    initForm();
-  });
+  // Check URL for role parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const roleParam = urlParams.get("type");
+  if (roleParam === "doctor") {
+    setActiveRole("doctor");
+  }
+
+  // Password visibility toggle
+  window.togglePassword = function (fieldId) {
+    const field = document.getElementById(fieldId);
+    const icon = field.nextElementSibling.nextElementSibling;
+    if (field.type === "password") {
+      field.type = "text";
+      icon.classList.remove("fa-eye");
+      icon.classList.add("fa-eye-slash");
+    } else {
+      field.type = "password";
+      icon.classList.remove("fa-eye-slash");
+      icon.classList.add("fa-eye");
+    }
+  };
 
   // Form submission
+  const registerForm = document.getElementById("registerForm");
   registerForm.addEventListener("submit", async function (e) {
     e.preventDefault();
+
+    // Disable button during submission
+    registerBtn.disabled = true;
+    registerBtn.textContent = "Registering...";
 
     const name = document.getElementById("name").value.trim();
     const email = document.getElementById("email").value.trim();
     const password = document.getElementById("password").value;
     const confirmPassword = document.getElementById("confirmPassword").value;
+    const role = document.getElementById("role").value;
+
+    // Clear previous errors
+    document.querySelectorAll(".error-message").forEach((el) => el.remove());
 
     // Validation
-    if (!name || !email || !password || !confirmPassword) {
-      alert("Please fill all fields");
-      return;
-    }
-
     if (password !== confirmPassword) {
-      alert("Passwords do not match");
+      showError("confirmPassword", "Passwords do not match");
+      registerBtn.disabled = false;
+      registerBtn.textContent = "Register";
       return;
     }
 
     if (password.length < 6) {
-      alert("Password must be at least 6 characters");
+      showError("password", "Password must be at least 6 characters");
+      registerBtn.disabled = false;
+      registerBtn.textContent = "Register";
       return;
     }
 
     try {
-      // Show loading state
-      registerBtn.disabled = true;
-      registerBtn.innerHTML =
-        '<i class="fas fa-spinner fa-spin"></i> Registering...';
-
-      // Send registration request
-      const response = await fetch("http://localhost:5000/api/auth/register", {
+      const response = await fetch("/api/v1/auth/register", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -82,88 +90,67 @@ document.addEventListener("DOMContentLoaded", function () {
           name,
           email,
           password,
-          role: userType,
+          role,
         }),
       });
 
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.msg || "Registration failed");
-      }
-
-      // Auto-login after registration
-      const loginResponse = await fetch(
-        "http://localhost:5000/api/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            email,
-            password,
-            role: userType,
-          }),
+        // Handle specific field errors or general error
+        if (data.errors) {
+          data.errors.forEach((err) => {
+            showError(err.param || "registerForm", err.msg);
+          });
+        } else {
+          throw new Error(data.error || "Registration failed");
         }
-      );
-
-      const loginData = await loginResponse.json();
-
-      if (!loginResponse.ok) {
-        throw new Error(loginData.msg || "Auto-login failed");
+        return;
       }
 
-      // Save token and redirect
-      localStorage.setItem("token", loginData.token);
-      localStorage.setItem("userRole", userType);
+      // Save token and user data
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user", JSON.stringify(data.user));
 
-      // Redirect to appropriate dashboard
-      if (userType === "patient") {
-        window.location.href = "../pages/patient-dashboard.html";
+      // Redirect based on role
+      if (data.user.role === "doctor") {
+        window.location.href = "/Frontend/pages/doctor-dashboard.html";
       } else {
-        window.location.href = "../pages/doctor-dashboard.html";
+        window.location.href = "/Frontend/pages/patient-dashboard.html";
       }
     } catch (error) {
-      alert(error.message);
+      console.error("Registration error:", error);
+      showError(
+        "registerForm",
+        error.message || "Registration failed. Please try again."
+      );
+    } finally {
       registerBtn.disabled = false;
-      registerBtn.innerHTML = "Register";
+      registerBtn.textContent = "Register";
     }
   });
 
-  // Toggle password visibility
-  window.togglePassword = function (inputId) {
-    const input = document.getElementById(inputId);
-    const icon = input.nextElementSibling.nextElementSibling;
+  // Helper function to show error messages
+  function showError(fieldId, message) {
+    // Remove existing error for this field
+    const existingError = document.querySelector(
+      `#${fieldId} + .error-message`
+    );
+    if (existingError) existingError.remove();
 
-    if (input.type === "password") {
-      input.type = "text";
-      icon.classList.remove("fa-eye");
-      icon.classList.add("fa-eye-slash");
+    const field = document.getElementById(fieldId);
+    const errorElement = document.createElement("div");
+    errorElement.className = "error-message";
+    errorElement.style.color = "red";
+    errorElement.style.marginTop = "5px";
+    errorElement.textContent = message;
+
+    // Insert after the field or at the form bottom
+    if (field) {
+      field.parentNode.insertBefore(errorElement, field.nextSibling);
     } else {
-      input.type = "password";
-      icon.classList.remove("fa-eye-slash");
-      icon.classList.add("fa-eye");
+      // For general form errors
+      registerForm.insertBefore(errorElement, registerForm.firstChild);
     }
-  };
-
-  // Initialize form on load
-  initForm();
+  }
 });
-
-function validateForm() {
-  const password = document.getElementById('password').value;
-  const confirmPassword = document.getElementById('confirmPassword').value;
-  
-  if (password.length < 6) {
-      alert('Password must be at least 6 characters');
-      return false;
-  }
-  
-  if (password !== confirmPassword) {
-      alert('Passwords do not match');
-      return false;
-  }
-  
-  return true;
-}

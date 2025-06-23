@@ -17,10 +17,10 @@
         </div>
 
         <div class="register-type">
-            <button class="register-type-btn active" id="patientBtn">
+            <button type="button" class="register-type-btn active" id="patientBtn" data-role="patient">
                 <i class="fas fa-user"></i> As Patient
             </button>
-            <button class="register-type-btn" id="doctorBtn">
+            <button type="button" class="register-type-btn" id="doctorBtn" data-role="doctor">
                 <i class="fas fa-user-md"></i> As Doctor
             </button>
         </div>
@@ -48,7 +48,7 @@
                 <i class="fas fa-lock"></i>
                 <i class="fas fa-eye toggle-password" onclick="togglePassword('confirmPassword')"></i>
             </div>
-            <input type="hidden" id="userType">
+            <input type="hidden" id="role" value="patient">
             <button type="submit" class="register-btn" id="registerBtn">Register</button>
         </form>
 
@@ -57,23 +57,6 @@
         </div>
     </div>
 
-    <script>
-        // Dynamic role switching
-            document.querySelectorAll('input[name="role"]').forEach(radio => {
-                radio.addEventListener('change', (e) => {
-                    const role = e.target.value;
-                    document.getElementById('formTitle').textContent = `${role.charAt(0).toUpperCase() + role.slice(1)} Registration`;
-                    document.getElementById('formSubtitle').textContent = `Register as a ${role}`;
-                });
-            });
-
-            // Password visibility toggle
-            document.getElementById('togglePassword').addEventListener('click', function () {
-                const passwordField = document.getElementById('password');
-                passwordField.type = passwordField.type === 'password' ? 'text' : 'password';
-                this.textContent = passwordField.type === 'password' ? '👁' : '👀';
-            });
-    </script>
     <script src="../js/register.js"></script>
 </body>
 

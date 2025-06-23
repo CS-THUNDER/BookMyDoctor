@@ -1,3 +1,13 @@
+//  login confarmation check At top of script or on DOMContentLoaded
+//document.addEventListener("DOMContentLoaded", function () {
+//const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+// if (isLoggedIn !== "true") {
+//  alert("Please log in to book an appointment.");
+//  window.location.href = "/Frontend/pages/login.html"; // Redirect to login
+// }
+//});
+
 function showToast(message, type = "success") {
   const toast = document.getElementById("toast");
   toast.textContent = message;
