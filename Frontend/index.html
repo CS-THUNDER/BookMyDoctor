@@ -9,7 +9,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
     <!-- Include navbar CSS -->
-    <link rel="stylesheet" href="/css/navbar.css">
+    <!-- <link rel="stylesheet" href="/Frontend/css/navbar.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 
@@ -33,8 +33,9 @@
         <div class="nav-buttons">
             <a href="/Frontend/pages/login.html" class="login-btn">Login</a>
         </div>
+        <!-- <div id="navbar-container"></div> -->
     </nav>
-    <div id="navbar-container"></div>
+    
 
     <!-- Hero Section -->
     <div class="hero">
@@ -233,6 +234,8 @@
                     <li><a href="/Frontend/pages/find-doctor.html">Find Doctor</a></li>
                     <li><a href="/Frontend/pages/Appointment.html">Book Appointment</a></li>
                     <li><a href="#contact">Contact</a></li>
+                    <li><a href="#">Our Team</a></li>
+
                 </ul>
             </div>
 
@@ -266,32 +269,35 @@
     </footer>
 
     <script>
-        // Load navbar
-        fetch('/components/navbar.html')
-            .then(response => response.text())
+        // Load navbar component
+        fetch('./components/navbar.html')
+            .then(response => {
+                if (!response.ok) throw new Error('Network response was not ok');
+                return response.text();
+            })
             .then(html => {
                 const container = document.getElementById('navbar-container');
-                const range = document.createRange();
-                range.selectNode(container);
-                const fragment = range.createContextualFragment(html);
-                container.appendChild(fragment);
+                if (!container) throw new Error('Navbar container not found');
+                container.innerHTML = html;
+                console.log('Navbar loaded successfully');
             })
             .catch(error => {
                 console.error('Error loading navbar:', error);
-                document.getElementById('navbar-container').innerHTML = `
-                        <nav class="navbar">
-                            <a href="/">BookMyDoctor</a>
-                            <!-- Fallback navigation -->
+                // Fallback basic navigation
+                document.body.insertAdjacentHTML('afterbegin', `
+                        <nav class="navbar-fallback">
+                            <a href="./index.html">BookMyDoctor</a>
+                            <a href="./pages/login.html">Login</a>
                         </nav>
-                    `;
+                    `);
             });
     </script>
-
-    <!-- Scripts -->
+    
     <script src="/Frontend/js/script.js"></script>
     <script src="/Frontend/js/search.js"></script>
     <script src="/Frontend/js/statsCounter.js"></script>
     <script src="/Frontend/js/index.js"></script>
+    <script src="/Frontend/js/navbar.js"></script>
 </body>
 
 </html>

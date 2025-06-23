@@ -134,17 +134,17 @@ async function loadDoctors() {
 }
 
 function bookAppointment() {
-  window.location.href = "find-doctor.html";
+  window.location.href = "../pages/find-doctor.html";
 }
 
 function viewDoctor(doctorId) {
-  window.location.href = `doctor-profile.html?id=${doctorId}`;
+  window.location.href = `../pages/doctor-profile.html?id=${doctorId}`;
 }
 
 function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("userRole");
-  window.location.href = "login.html";
+  window.location.href = "../pages/login.html";
 }
 
 // Make functions available globally

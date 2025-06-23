@@ -128,3 +128,12 @@ async function loginUser(email, password, userType) {
     btn.disabled = false;
   }
 }
+
+// After successful login
+localStorage.setItem("token", data.token);
+localStorage.setItem("userRole", userType);
+
+// Update navbar
+if (window.updateNavbar) {
+    updateNavbar();
+}

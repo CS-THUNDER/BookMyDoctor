@@ -9,7 +9,7 @@
 /* Base Styling */
 body {
   font-family: "Inter", sans-serif;
-  background: url("appointment booking bg.jpg") no-repeat center center/cover;
+  background: linear-gradient(rgba(40, 70, 110, 0.45), rgba(80, 140, 180, 0.35)), url("appointment booking bg.jpg") no-repeat center center/cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -330,4 +330,37 @@ button:hover {
   .nav-search input {
     width: 100px;
   }
+}
+
+.health-tip-card {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  max-width: 280px;
+  padding: 1rem 1.25rem;
+  background-color: #e7f6f2;
+  border-left: 5px solid #10b981;
+  border-radius: 10px;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  z-index: 999;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.health-tip-card h3 {
+  color: #10b981;
+  font-size: 1.1rem;
+  margin-bottom: 0.4rem;
+}
+
+.health-tip-card p {
+  font-size: 0.95rem;
+  color: #333;
+  margin: 0;
+  line-height: 1.4;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
 }

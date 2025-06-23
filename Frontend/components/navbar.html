@@ -2,29 +2,32 @@
 <html>
 <head>
     <base href="/">
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Preload CSS to avoid FOUC -->
+    <link rel="preload" href="../css/navbar.css" as="style">
+    <link rel="stylesheet" href="../css/navbar.css">
 </head>
 <body>
-    <!-- Navbar Structure -->
+    <!-- Actual Navbar Content -->
     <nav class="navbar">
-        <!-- Your navbar content here -->
+        
+        <div class="nav-buttons" id="navButtons">
+            <!-- Will be populated by navbar.js -->
+        </div>
     </nav>
 
-    <!-- Scripts -->
+    <!-- Loading Scripts -->
     <script>
-        // Prevent standalone loading
-        if (window === top) {
-            window.location.href = '/';
-        }
+        // Verify the component is being loaded properly
+        console.log('Navbar component loaded');
         
-        // Load styles
-        const link = document.createElement('link');
-        link.rel = 'stylesheet';
-        link.href = '/css/navbar.css';
-        document.head.appendChild(link);
+        // Load JavaScript
+        const script = document.createElement('script');
+        script.src = '../js/navbar.js';
+        script.onload = () => console.log('Navbar JS loaded');
+        script.onerror = () => console.error('Failed to load navbar JS');
+        document.body.appendChild(script);
     </script>
-    <script src="/js/navbar.js"></script>
 </body>
 </html>
