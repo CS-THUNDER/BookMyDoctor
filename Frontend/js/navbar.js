@@ -14,13 +14,13 @@ document.addEventListener("DOMContentLoaded", function () {
     navButtons.innerHTML = `
           <div class="profile-dropdown">
               <button class="profile-btn">
-                  <img src="./Assets/${userRole}-avatar.png" 
+                  <img src="/Frontend/Assets/${userRole}-avatar.png" 
                        alt="Profile" 
-                       onerror="this.src='./Assets/default-avatar.png'">
+                       onerror="this.src='/Frontend/Assets/default-avatar.png'">
                   <span>Profile</span>
               </button>
               <div class="dropdown-menu">
-                  <a href="./pages/${userRole}-dashboard.html">Dashboard</a>
+                  <a href="/Frontend/pages/${userRole}-dashboard.html">Dashboard</a>
                   <a href="#" id="logoutBtn">Logout</a>
               </div>
           </div>
@@ -32,8 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
         e.preventDefault();
         localStorage.removeItem("token");
         localStorage.removeItem("userRole");
-        window.location.href = "./pages/login.html";
+        window.location.href = "/Frontend/pages/login.html";
       });
+  } else {
+    navButtons.innerHTML = `
+          <a href="/Frontend/pages/login.html" class="login-btn" id="loginBtn">Login</a>
+      `;
   }
-  // Else case is already handled in HTML fallback
 });

@@ -3,7 +3,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
 
-  if (!token || !user || user.role !== "patient") {
+  if (!user || user.role !== "patient") {
     window.location.href = "/Frontend/pages/login.html";
     return;
   }
@@ -145,7 +145,7 @@ function viewDoctor(doctorId) {
 function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("userRole");
-  window.location.href = "../pages/login.html";
+  window.location.href = "/Frontend/index.html";
 }
 
 // Make functions available globally

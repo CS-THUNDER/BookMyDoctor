@@ -74,7 +74,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Redirect based on user type
       if (userType === "patient") {
-        window.location.href = "../index.html"; // Redirect to patient dashboard
+        window.location.href = "../pages/patient-dashboard.html"; // Redirect to patient dashboard
       } else {
         window.location.href = "../pages/doctor-dashboard.html"; // Redirect to doctor dashboard
       }

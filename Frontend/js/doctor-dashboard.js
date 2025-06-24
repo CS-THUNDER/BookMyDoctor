@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
   const user = JSON.parse(localStorage.getItem("user"));
   const token = localStorage.getItem("token");
 
-  if (!token || !user || user.role !== "doctor") {
-    window.location.href = "/Frontend/pages/login.html";
-    return;
-  }
+  // if (!token || !user || user.role !== "doctor") {
+  //   window.location.href = "/Frontend/pages/login.html";
+  //   return;
+  // }
 
   // Load doctor data
   loadDoctorData();
@@ -130,7 +130,7 @@ function cancelAppointment(appointmentId) {
 function logout() {
   localStorage.removeItem("token");
   localStorage.removeItem("userRole");
-  window.location.href = "login.html";
+  window.location.href = "/Frontend/index.html";
 }
 
 // Make functions available globally
