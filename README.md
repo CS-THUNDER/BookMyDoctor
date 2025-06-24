@@ -1,88 +1,156 @@
 
+# 🩺 BookMyDoctor – Online Appointment Booking System
 
-# 🚑 BookMyDoctor
+## 📌 Description
 
-A full-stack **Doctor Appointment Booking System** built with the **MERN** stack.
-
----
-
-## 🔍 Table of Contents
-
-1. [Description](#description)  
-2. [Features](#features)  
-3. [Tech Stack](#tech-stack)  
-4. [Demo](#demo)  
-5. [Getting Started](#getting-started)  
-   - [Prerequisites](#prerequisites)  
-   - [Installation](#installation)  
-   - [Running the App](#running-the-app)  
-6. [Usage](#usage)  
-7. [API Endpoints](#api-endpoints)  
-8. [Screenshots](#screenshots)  
-9. [Deployment](#deployment)  
-10. [Testing](#testing)  
-11. [Contributing](#contributing)  
-12. [License](#license)
+**BookMyDoctor** is a web-based appointment booking platform that helps users easily find doctors, schedule appointments, and access medical services online. The system supports secure login for patients, doctors, and administrators.
 
 ---
 
-## 📘 Description
+## 🚀 Live Demo
 
-BookMyDoctor is a robust appointment system that allows patients to find doctors and schedule visits online, while providing clinics with seamless appointment management capabilities.
+[🔗 Visit Website](https://bookmydoctor.vercel.app) *(Replace with actual deployed URL if available)*
+
+---
+
+## 🧰 Tech Stack
+
+### 💻 Frontend
+- **HTML5**
+- **CSS3** (Modular, Responsive, Media Queries)
+- **JavaScript** (Vanilla JS, DOM manipulation)
+- **GSAP** (Scroll animations)
+- **SVG Icons**
+
+### 🛠️ Backend
+- **Node.js**
+- **Express.js**
+- **MongoDB** + **Mongoose**
+- **bcrypt.js** (for password encryption)
+- **jsonwebtoken (JWT)** (for authentication)
+- **dotenv** (for environment variables)
+
+---
+
+## 🗂️ Folder Structure
+
+### 📁 Frontend
+
+```
+Frontend/
+├── Assets/              # Images, icons, background assets
+├── css/                 # Modular CSS files
+├── js/                  # All JavaScript files per page
+├── pages/               # HTML pages (login, register, dashboard, etc.)
+├── components/          # Navbar and reusable HTML components
+└── index.html           # Main Landing Page
+```
+
+### 📁 Backend
+
+```
+Backend/
+├── config/              # MongoDB configuration
+├── controllers/         # Logic for routes
+├── middleware/          # Auth middleware (JWT, role checking)
+├── models/              # MongoDB Schemas (User, Appointment)
+├── routes/              # Route endpoints
+├── utils/               # Helper functions
+├── .env                 # Environment secrets
+├── .gitignore           # Ignored files
+├── package.json         # Project dependencies
+└── server.js            # Main entry file
+```
+
+---
+
+## 👥 User Roles
+
+- **Admin** – Manage users, doctors
+- **Doctor** – View dashboard, approve appointments
+- **Patient** – Book appointments, view history
+
+---
+
+## 🔐 Authentication
+
+- **JWT (JSON Web Token)** – for secure login sessions
+- **bcrypt.js** – to hash and store passwords securely
+- Protected routes with role-based access using custom middleware
 
 ---
 
 ## ✅ Features
 
-- Patient registration & login (JWT-based authentication)  
-- Doctor profile creation & browsing  
-- Schedule browsing & appointment booking  
-- Email/SMS notifications for confirm/cancellations  
-- Patient & doctor dashboards  
-- Appointment status tracking  
-- Admin panel (optional)
+- 🔍 Doctor listing (with dummy data)
+- 📅 Appointment form and schedule
+- 🔐 Login/Register for Patient, Doctor, Admin
+- 📱 Fully responsive and mobile-friendly UI
+- 💡 Scroll-based animations using GSAP
+- 🧾 Basic dashboards (extendable)
 
 ---
 
-## 🛠 Tech Stack
+## ⚙️ Run Locally
 
-| Layer     | Technologies                         |
-|-----------|--------------------------------------|
-| Frontend  | React, Redux, Bootstrap/Ant Design    |
-| Backend   | Node.js, Express                     |
-| Database  | MongoDB                              |
-| Auth      | JSON Web Tokens (JWT)                |
-| Deployment| Render (or Heroku, Netlify, Vercel) |
-
----
-
-## 🎥 Demo
-
-*(Optional: embed demo video or screenshots here)*
-
----
-
-## ⚙️ Getting Started
-
-### Prerequisites
-
-
-A simple and responsive web app to book appointments.
-
-## 🔧 Tech Stack
-
-- HTML / CSS / JavaScript
-
-## How to Run
-
+### 1. Clone the repository
 ```bash
+git clone https://github.com/your-username/bookmydoctor.git
+```
+
+### 2. Install backend dependencies
+```bash
+cd Backend
 npm install
+```
+
+### 3. Setup `.env` file
+Create a `.env` file inside `Backend/`:
+```
+PORT=5000
+MONGO_URI=mongodb://localhost:27017/bookmydoctor
+JWT_SECRET=your_jwt_secret
+```
+
+### 4. Start the backend server
+```bash
 npm start
 ```
 
-### Installation
+### 5. Open frontend
+Open `Frontend/index.html` in your browser or use a Live Server extension in VS Code.
 
-```bash
-git clone https://github.com/CS-THUNDER/BookMyDoctor.git
-cd BookMyDoctor
+---
 
+## 🧾 .gitignore
+
+```
+node_modules/
+.env
+.vscode/
+.DS_Store
+```
+
+---
+
+## 👨‍💻 Author
+
+
+
+---
+
+## 📸 Screenshots (Optional)
+
+> You can include screenshots of:
+> - Home Page  
+> - Find Doctor  
+> - Login/Register  
+> - Dashboard views
+
+---
+
+## 🏁 Conclusion
+
+This project demonstrates a complete full-stack web application using Node.js and MongoDB with clean frontend integration. It includes responsive design, user authentication, and a scalable backend structure.
+
+---
