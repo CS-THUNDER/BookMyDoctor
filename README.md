@@ -1,6 +1,14 @@
 
 # 🩺 BookMyDoctor – Online Appointment Booking System
 
+## 🧭 Project Overview
+**BookMyDoctor** is a web-based appointment booking system made specifically for **local doctors** and **private clinics**, especially in **semi-urban and rural areas**. It's **not** a hospital management system — rather, it's a digital bridge between patients and nearby offline clinics for easier scheduling.
+
+---
+
+## 🎯 Project Objective
+The aim is to help people **find local doctors easily** and **book offline appointments** from the comfort of home. It also helps doctors manage their bookings without disrupting their existing offline practice.
+
 ## 📌 Description
 
 **BookMyDoctor** is a web-based appointment booking platform that helps users easily find doctors, schedule appointments, and access medical services online. The system supports secure login for patients, doctors, and administrators.
