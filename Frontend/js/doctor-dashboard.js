@@ -64,19 +64,19 @@ async function loadTodaysAppointments() {
     const mockAppointments = [
       {
         id: 1,
-        patient: "John Doe",
+        patient: "Sandip Kumar Mandal",
         time: "10:00 AM",
         purpose: "Regular Checkup",
       },
       {
         id: 2,
-        patient: "Jane Smith",
+        patient: "Saikat Dey",
         time: "11:30 AM",
         purpose: "Consultation",
       },
       {
         id: 3,
-        patient: "Robert Johnson",
+        patient: "Rakesh Prasad",
         time: "2:00 PM",
         purpose: "Follow-up",
       },
@@ -114,7 +114,7 @@ async function loadStatistics() {
 }
 
 function addSchedule() {
-  window.location.href = "add-schedule.html";
+  alert("Add Schedule page is under construction.");
 }
 
 function startAppointment(appointmentId) {

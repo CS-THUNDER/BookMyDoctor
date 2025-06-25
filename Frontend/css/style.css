@@ -896,3 +896,367 @@ html {
       transform: translateY(-5px);
   }
 }
+
+/* Enhanced Feedback Section */
+.feedback-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9f5ff 100%);
+  padding: 80px 0;
+  position: relative;
+  overflow: hidden;
+}
+
+.feedback-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('/Frontend/Assets/medical-pattern.png') repeat;
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.feedback-header {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+}
+
+.heartbeat-icon {
+  font-size: 60px;
+  color: #e74c3c;
+  margin-bottom: 20px;
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.1); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+.feedback-header h2 {
+  font-size: 2.5rem;
+  color: #2c3e50;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.feedback-header p {
+  color: #7f8c8d;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.feedback-container {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+}
+
+.feedback-illustration {
+  flex: 1;
+  background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px;
+}
+
+.feedback-illustration img {
+  max-width: 100%;
+  height: auto;
+  filter: drop-shadow(0 5px 15px rgba(0,0,0,0.1));
+}
+
+.feedback-form-container {
+  flex: 1;
+  padding: 50px;
+}
+
+.floating-form {
+  position: relative;
+}
+
+.form-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+.form-header h3 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+.form-header p {
+  color: #7f8c8d;
+  font-size: 1rem;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 25px;
+}
+
+.form-group.floating input,
+.form-group.floating textarea {
+  width: 100%;
+  padding: 15px 20px 15px 45px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s;
+  background-color: #f9f9f9;
+}
+
+.form-group.floating textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+.form-group.floating label {
+  position: absolute;
+  top: 15px;
+  left: 45px;
+  color: #95a5a6;
+  transition: all 0.3s;
+  pointer-events: none;
+  background: #f9f9f9;
+  padding: 0 5px;
+}
+
+.form-group.floating i {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  color: #95a5a6;
+  transition: all 0.3s;
+}
+
+.form-group.floating input:focus,
+.form-group.floating textarea:focus,
+.form-group.floating input:not(:placeholder-shown),
+.form-group.floating textarea:not(:placeholder-shown) {
+  border-color: #3498db;
+  background-color: white;
+}
+
+.form-group.floating input:focus + label,
+.form-group.floating textarea:focus + label,
+.form-group.floating input:not(:placeholder-shown) + label,
+.form-group.floating textarea:not(:placeholder-shown) + label {
+  top: -10px;
+  left: 35px;
+  font-size: 12px;
+  color: #3498db;
+  background: white;
+}
+
+.form-group.floating input:focus ~ i,
+.form-group.floating textarea:focus ~ i,
+.form-group.floating input:not(:placeholder-shown) ~ i,
+.form-group.floating textarea:not(:placeholder-shown) ~ i {
+  color: #3498db;
+}
+
+.rating-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.rating-container label {
+  display: block;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+.rating-stars {
+  display: flex;
+  direction: rtl;
+  justify-content: center;
+  gap: 10px;
+}
+
+.rating-stars input[type="radio"] {
+  display: none;
+}
+
+.rating-stars label {
+  color: #ddd;
+  font-size: 30px;
+  padding: 0 5px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.rating-stars label:hover,
+.rating-stars label:hover ~ label,
+.rating-stars input[type="radio"]:checked ~ label {
+  color: #f1c40f;
+}
+
+.submit-btn {
+  background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  border-radius: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+}
+
+.submit-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(52, 152, 219, 0.4);
+}
+
+.pulse-on-hover:hover {
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.feedback-thankyou {
+  text-align: center;
+  padding: 30px;
+}
+
+.thankyou-content {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.checkmark-animation {
+  margin-bottom: 25px;
+}
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #2ecc71;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 3;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  margin: 0 auto;
+  box-shadow: 0 0 0 rgba(46, 204, 113, 0.4);
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% { stroke-dashoffset: 0; }
+}
+
+@keyframes scale {
+  0%, 100% { transform: none; }
+  50% { transform: scale3d(1.1, 1.1, 1); }
+}
+
+@keyframes fill {
+  100% { box-shadow: inset 0 0 0 100px #2ecc71; }
+}
+
+.feedback-thankyou h3 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+
+.feedback-thankyou p {
+  color: #7f8c8d;
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+.btn-back-to-form {
+  background: none;
+  border: 2px solid #3498db;
+  color: #3498db;
+  padding: 10px 20px;
+  border-radius: 50px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+
+.btn-back-to-form:hover {
+  background: #3498db;
+  color: white;
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+  .feedback-container {
+      flex-direction: column;
+  }
+  
+  .feedback-illustration {
+      display: none;
+  }
+  
+  .feedback-form-container {
+      padding: 30px;
+  }
+}
+
+@media (max-width: 576px) {
+  .feedback-header h2 {
+      font-size: 2rem;
+  }
+  
+  .feedback-form-container {
+      padding: 20px;
+  }
+  
+  .form-group.floating input,
+  .form-group.floating textarea {
+      padding: 12px 15px 12px 40px;
+  }
+  
+  .form-group.floating i {
+      left: 12px;
+  }
+}
