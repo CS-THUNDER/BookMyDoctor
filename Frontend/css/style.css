@@ -560,6 +560,7 @@ html {
   color: white;
   font-size: 18px;
   transition: all 0.3s ease;
+  text-decoration: none;
 }
 
 .social-icons a:hover {
